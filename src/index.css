@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Halftone checkered gradient theme mimicking Image 3 exactly (White canvas, diamond grey halftone fading to sparse dots) */
+.halftone-theme-bg {
+  background-color: #ffffff;
+  background-image: 
+    /* The halftone checkered diamond pattern made darker/crisper as requested */
+    radial-gradient(circle, rgba(15, 23, 42, 0.25) 1.6px, transparent 1.6px),
+    linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(253, 254, 255, 1) 100%);
+  background-size: 18px 18px, 100% 100%;
+  position: relative;
+}
+
+/* Sleek Google color running border animation wrappers */
+@keyframes googleGlowRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.google-glow-border-wrapper {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 1.5px; /* Represents the ultra thin elegant border trail */
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.google-glow-border-bg {
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #4285f4 0deg,
+    #ea4335 90deg,
+    #fbbc05 180deg,
+    #34a853 270deg,
+    #4285f4 360deg
+  );
+  animation: googleGlowRotation 6s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.google-glow-border-inner {
+  position: relative;
+  z-index: 10;
+  border-radius: 26px;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Elegant linear-to-dots diamond mask overlay resembling the image perfectly */
+.diamond-halftone-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M8 0 L16 8 L8 16 L0 8 Z' fill='%230f172a' fill-opacity='0.6'/%3E%3C/svg%3E");
+  background-size: 16px 16px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+}
+
+/* Flashy continuously running light shimmer animation for all keys and buttons */
+@keyframes flashyShine {
+  0% {
+    transform: translateX(-150%) skewX(-25deg);
+  }
+  50% {
+    transform: translateX(150%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(150%) skewX(-25deg);
+  }
+}
+
+.flashy-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.flashy-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 30%,
+    rgba(255, 255, 255, 0.65) 50%,
+    rgba(255, 255, 255, 0.35) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-150%) skewX(-25deg);
+  animation: flashyShine 3.5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* For dark context buttons, adjust shine opacity */
+.flashy-btn-dark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.25) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-150%) skewX(-25deg);
+  animation: flashyShine 3.2s infinite ease-in-out;
+  pointer-events: none;
+}
