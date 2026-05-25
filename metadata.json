@@ -1,0 +1,6 @@
+{
+  "name": "Easy Top",
+  "description": "Super fast, secure, and reliable OTP provider for WhatsApp, Gmail, and SMS verifications with sleek 3D analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
